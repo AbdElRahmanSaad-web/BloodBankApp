@@ -20,11 +20,11 @@ class RequestsResource extends JsonResource
             'patientName' => $this->recipient->name??null,
             'bloodType' => $this->requested_blood_type,
             'quantity' => $this->quantity,
-            'bloodBankId' => $this->blood_bank_id,
+            'bloodBankId' => $this->blood_bank->name??null,
             'bloodBankLocation'=>  $this->blood_bank->location??null,
             'time' => $this->donation_time,
             'date' => $this->donation_date,
-            'HospitalId' => $this->hospital_id,
+            'HospitalId' => $this->hospital->name,
             'HospitalLocation' =>  $this->hospital->location??'null',
         ];
     }
