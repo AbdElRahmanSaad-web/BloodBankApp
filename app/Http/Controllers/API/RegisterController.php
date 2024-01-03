@@ -36,6 +36,7 @@ class RegisterController extends Controller
                     'type' => 'required_if:userType,Recipient,Donor',
                     'bloodType' => 'required_if:userType,Donor,Recipient',
                     'birthDate' => 'required_if:userType,Donor,Recipient',
+                    'otp' => 'required|unique:donors,contact_details|unique:hospitals,contact_details|unique:blood_banks,contact_details|unique:recipients,contact_details',
                 ]);
 
             if ($validateUser->fails()) {
@@ -57,7 +58,7 @@ class RegisterController extends Controller
                 'blood_types' => $request->bloodTypes,
                 'medical_history' =>  $request->medicalHistory,
                 'location' => $request->location,
-                'otp' => rand(1111, 9999),
+                'otp' => $request->otp,
                 'image' => $request->image,
             ];
 

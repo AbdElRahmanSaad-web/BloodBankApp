@@ -17,6 +17,7 @@ class VerifyOtpController extends Controller
         try {
             $validateUser = Validator::make($request->all(),
                 [
+                    'phone' => 'required',
                     'otp' => 'required',
                 ]);
 
@@ -32,10 +33,10 @@ class VerifyOtpController extends Controller
 
 
 
-            $user = Donor::where('otp', $request->otp)->first()??
-                Hospital::where('otp', $request->otp)->first()??
-                BloodBank::where('otp', $request->otp)->first()??
-                Recipient::where('otp', $request->otp)->first();
+            $user = Donor::where('otp', $request->otp)->where('contact_details', $request->phone)->first()??
+                Hospital::where('otp', $request->otp)->where('contact_details', $request->phone)->first()??
+                BloodBank::where('otp', $request->otp)->where('contact_details', $request->phone)->first()??
+                Recipient::where('otp', $request->otp)->where('contact_details', $request->phone)->first();
 
             if($request->otp == $user->otp){
 
