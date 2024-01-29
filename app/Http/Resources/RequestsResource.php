@@ -24,7 +24,7 @@ class RequestsResource extends JsonResource
             'bloodBankLocation'=>  $this->blood_bank->location??null,
             'time' => $this->donation_time,
             'date' => $this->donation_date,
-            'HospitalId' => $this->hospital->name,
+            'HospitalId' => $this->hospital->name??null,
             'HospitalLocation' =>  $this->hospital->location??'null',
         ];
     }

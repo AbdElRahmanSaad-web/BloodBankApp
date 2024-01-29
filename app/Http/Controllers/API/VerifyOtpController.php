@@ -38,7 +38,7 @@ class VerifyOtpController extends Controller
                 BloodBank::where('otp', $request->otp)->where('contact_details', $request->phone)->first()??
                 Recipient::where('otp', $request->otp)->where('contact_details', $request->phone)->first();
 
-            if($request->otp == $user->otp){
+            if(isset($user)){
 
                 return response()->json([
                     'status' => true,

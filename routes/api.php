@@ -32,8 +32,8 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('register', [RegisterController::class,'index']);
 Route::post('verify_phone', [VerifyPhoneController::class, 'index']);
+Route::post('verify_otp', [VerifyOtpController::class, 'index']);
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('verify_otp', [VerifyOtpController::class, 'index']);
     Route::middleware(["Token"])->group(function () {
         Route::get('logout', [LogoutController::class, 'logout']);
         Route::get('getHospitals', [GetHospitalsController::class, 'index']);
